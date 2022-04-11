@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% load static %}
+
+<!-- {% block head %}
+<link rel="stylesheet" href="{% static 'search/ticker_form.css' %}">
+{% endblock %} -->
+
+
+{% block content %}
+<div id="rainbow">
+  <h1>Enter Ticker of Company</h1>
+  <form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit"/>
+  </form>
+</div>
+{% endblock %}
