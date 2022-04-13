@@ -6,6 +6,8 @@ from django.views.generic.edit import CreateView
 from django.db import models
 from django import forms
 import requests
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV2Checkbox
 
 
 # Create your views here.
@@ -20,11 +22,18 @@ class searchform(forms.ModelForm):
         fields = ('ticker',)
 def home(request):
     return render(request,"users/home.html")
-
+  
+class CustomUserCreationForm(UserCreationForm):  
+    username = forms.CharField(label='username', min_length=5, max_length=150)  
+    email = forms.EmailField(label='email')  
+    password1 = forms.CharField(label='password', widget=forms.PasswordInput)  
+    password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput) 
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox) 
+  
 
 
 class SignUp(CreateView):
-    form_class = UserCreationForm
+    form_class = CustomUserCreationForm#UserCreationForm
     success_url = reverse_lazy("login")
     template_name = "users/signup.html"
 
@@ -35,7 +44,7 @@ class TickerSearch(CreateView):
 
 def Analysis(request):
     stock = str(tckrsymbol.objects.last().ticker)
-    
+    #https://us-east1-rajasankar-cis680.cloudfunctions.net/stkfunction-1?message=ibm
     url = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol='+ stock + '&interval=5min&apikey=3VLLLPTTVJO8QNDK'
     print(url)
     r = requests.get(url)
