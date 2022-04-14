@@ -1,11 +1,23 @@
 <!--/templates/register.html-->
 
 {% block content %}
+<head>
+    <style>
+     body {
+      color: red;
+      background-color: #8080ff;
+      /* text-align: center; */
+      font-family: Georgia, serif;
+      } 
+    
+    </style>
+  </head>
 <h2>Register</h2>
 
 <form method="post">
     {% csrf_token %}
-    {{form}}
+    <!-- {{form}} -->
+    {{ form.as_p }}
     <input type="submit" value="Register">
 </form>
 

@@ -4,15 +4,33 @@
 <!-- {% block head %}
 <link rel="stylesheet" href="{% static 'search/ticker_form.css' %}">
 {% endblock %} -->
-
-
 {% block content %}
-<div id="rainbow">
-  <h1>Enter Ticker of Company</h1>
+
+{% if user.is_authenticated %}
+
+<head>
+  <style>
+   body {
+    color: red;
+    background-color: #8080ff;
+    text-align: center;
+    font-family: Georgia, serif;
+    } 
+    
+    td {
+      text-align:center
+    }
+  </style>
+</head>
+<div>
+  <h1>Enter ticker of a company</h1>
   <form action="" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Submit"/>
   </form>
 </div>
+{% else %}
+<p>Not logged in</p>
+{% endif %}
 {% endblock %}

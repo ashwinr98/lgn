@@ -125,7 +125,7 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'ttcksearch'
 LOGOUT_REDIRECT_URL = "login"
 RECAPTCHA_PUBLIC_KEY = '6LdWLW0fAAAAAAbKlOLny8LQn9gdjnn0qBAlfugx'
 RECAPTCHA_PRIVATE_KEY = '6LdWLW0fAAAAAHTpPr8jCRn8hPPJT7pwG6ccLZds'

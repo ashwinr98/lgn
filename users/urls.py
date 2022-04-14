@@ -8,4 +8,5 @@ urlpatterns = [
  path("signup/", views.SignUp.as_view(), name="signup"),
  path("search/", views.TickerSearch.as_view(), name = "ttcksearch"),
  path('search/results/', views.Analysis, name="tickersymbolanalysis"),
+ path('graph/', views.Graph, name="graph"),
 ]
