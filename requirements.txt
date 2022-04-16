@@ -1,0 +1,5 @@
+Django==3.2.5
+django-recaptcha==3.0.0
+pandas==1.4.2
+plotly==5.7.0
+requests==2.27.1
